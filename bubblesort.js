@@ -25,15 +25,15 @@ function swap(thing1, thing2) {
 }
 
 function bubbleSort(array, lengthOfArray) {
-  if (array.length <= 1) {
+  console.log('length of array', lengthOfArray)
+  if (lengthOfArray <= 1) {
     return array;
   }
-  for (let i = 0; i < array.length; i++) {
-    swap(array[i], array[i + 1]);
+  for (let i = 0; i < lengthOfArray; i++) {
+    if (array[i] > array[i + 1]) {
+      [array[i], array[i + 1]] = [array[i + 1], array[i]];
+    }
   }
-  // console.log(array.splice(-1, 1));
-  // console.log(array);
-  // //bubbleSort(array.splice(-1, 1))
-  console.log(array);
-  return array;
+  console.log('array', array)
+  return bubbleSort(array, lengthOfArray - 1)
 }
