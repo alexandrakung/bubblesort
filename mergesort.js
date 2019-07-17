@@ -1,12 +1,11 @@
 /* eslint-disable complexity */
 function split(wholeArray) {
-
   /* your code here to define the firstHalf and secondHalf arrays */
-  const length = wholeArray.length
-  const mid = Math.floor(length / 2)
+  const length = wholeArray.length;
+  const mid = Math.floor(length / 2);
 
-  const firstHalf = wholeArray.slice(0, mid)
-  const secondHalf = wholeArray.slice(mid)
+  const firstHalf = wholeArray.slice(0, mid);
+  const secondHalf = wholeArray.slice(mid);
   return [firstHalf, secondHalf];
 }
 
@@ -30,25 +29,29 @@ function merge(left, right) {
   while (lp < left.length || rp < right.length) {
     if (lp < left.length && rp < right.length) {
       if (left[lp] <= right[rp]) {
-        merged.push(left[lp])
+        merged.push(left[lp]);
         lp += 1;
-      }
-      else {
-        merged.push(right[rp])
+      } else {
+        merged.push(right[rp]);
         rp += 1;
       }
-    }
-    else if (lp < left.length) {
-      merged.push(left[lp])
+    } else if (lp < left.length) {
+      merged.push(left[lp]);
       lp += 1;
-    }
-    else {
-      merged.push(right[rp])
+    } else {
+      merged.push(right[rp]);
       rp += 1;
     }
   }
   return merged;
+}
 
-
-
+function mergeSort(arr) {
+  if (arr.length === 0 || arr.length === 1) {
+    return arr;
+  }
+  console.log('SPLIT', split(arr));
+  console.log('SORT', mergeSort(split(arr)[0]), mergeSort(split(arr)[1]));
+  // console.log('RIGHT', split(arr[1]));
+  return merge(mergeSort(split(arr)[0]), mergeSort(split(arr)[1]));
 }
