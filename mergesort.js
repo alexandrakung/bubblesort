@@ -6,6 +6,8 @@ function split(wholeArray) {
 
   const firstHalf = wholeArray.slice(0, mid);
   const secondHalf = wholeArray.slice(mid);
+  console.log('first half', firstHalf);
+  console.log('second half', secondHalf)
   return [firstHalf, secondHalf];
 }
 
@@ -52,6 +54,8 @@ function mergeSort(arr) {
   }
   console.log('SPLIT', split(arr));
   console.log('SORT', mergeSort(split(arr)[0]), mergeSort(split(arr)[1]));
+  const splitArray = split(arr)
+  return merge(mergeSort(splitArray[0]), mergeSort(splitArray[1]));
   // console.log('RIGHT', split(arr[1]));
-  return merge(mergeSort(split(arr)[0]), mergeSort(split(arr)[1]));
+  //return merge(mergeSort(split(arr)[0]), mergeSort(split(arr)[1]));
 }
